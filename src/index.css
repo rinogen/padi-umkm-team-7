@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-sans;
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@layer base {
+  :root{
+    --color-brand-primary: #0092AC;
+    --color-brand-secondary: #182958;
+    --color-text-primary: #000000;
+    --color-text-secondary: #444B55;
+    --color-border-primary: #DEE3ED;
+    --color-background-primary: #FFFFFF;
+    --color-background-secondary: rgb(243 244 246);
+  }
+}
+
+.container-layout {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.25rem;
+  height: 100%;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-family: Ubuntu, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+
+@media (min-width: 1280px) {
+  .container-layout {
+    width: 1200px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.primary-button-blue {
+  border-radius: .5rem;
+  background-color: var(--color-brand-primary);
+  font-weight: 500;
+  color: var(--color-background-primary);
+  transition: background-color 0.3s, opacity 0.3s; /* Smooth transition */;
+}
+
+.primary-button-blue:hover {
+  background-color: var(--color-brand-primary); /* Slightly transparent background */
+  opacity: 0.8; /* Change opacity on hover if needed */
+}
+
+.primary-button-white {
+  border-radius: .5rem;
+  border-width: 1px;
+  border-color: var(--color-brand-primary);
+  font-weight: 500;
+  color: var(--color-brand-primary);
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.primary-button-white:hover {
+  background-color: var(--color-brand-primary); /* Background color on hover */
+  color: var(--color-background-primary); /* Text color on hover */
+}
+
+.collapse {
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.collapse.collapsed {
+  height: 0;
+  opacity: 0;
+}
+
+.collapse.expanded {
+  height: auto;
+  opacity: 1;
+}
