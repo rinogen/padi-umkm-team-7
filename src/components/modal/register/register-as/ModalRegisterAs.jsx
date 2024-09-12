@@ -9,7 +9,7 @@ const Modal = () => {
     <ModalFragment isVisible={showRegisterModal} onClose={closeRegisterModal}>
       <div className=" flex flex-col">
         <div className="flex-1 bg-white lg:flex overflow-hidden rounded-2xl">
-          <div className="flex flex-col justify-center items-center w-full p-10">
+          <div className="flex flex-col justify-center items-center w-[624px] p-10">
             <div className="w-full mb-8">
               <div className="flex justify-between items-center">
                 <div className="text-2xl text-paletteText-primary font-bold">
@@ -64,6 +64,42 @@ const Modal = () => {
                   </div>
                 </div>
               </a>
+              <div className="w-full mb-2">
+                <p className="text-center text-sm text-palette Text-primary">
+                  Dengan mendaftar, saya menyetujui{' '}
+                  <a href="/syarat-dan-ketentuan">
+                    <span className="text-[#009ea9] font-light cursor-pointer">
+                      Syarat dan Ketentuan
+                    </span>
+                  </a>
+                  &nbsp;Serta{' '}
+                  <a href="/kebijakan-privasi">
+                    <span className="text-[#009ea9] font-light cursor-pointer">
+                      Kebijakan Privasi
+                    </span>
+                  </a>{' '}
+                  yang Berlaku.
+                </p>
+              </div>
+              <div className="w-full">
+                <div className="relative flex py-2 items-center justify-center">
+                  <div className="flex-grow border-t border-gray-200"></div>
+                  <span className="absolute px-2 bg-white text-gray-400">
+                    atau
+                  </span>
+                  <div className="flex-grow border-t border-gray-200"></div>
+                </div>
+              </div>
+              <div className="w-full mt-4">
+                <p className="text-center text-md font-normal text-paletteText-primary">
+                  Sudah punya akun PaDi UMKM?{' '}
+                  <a href="/login">
+                    <span className="text-[#009ea9] font-semibold cursor-pointer">
+                      Masuk
+                    </span>
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>

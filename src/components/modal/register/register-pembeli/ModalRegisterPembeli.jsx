@@ -12,7 +12,7 @@ const ModalRegisterPembeli = () => {
       onClose={closeRegisterPembeliModal}>
       <div className="flex justify-center items-center lg:h-screen bg-login-wrapper relative">
         <div className="max-w-screen-sm w-full bg-white border border-gray-300 shadow-lg rounded-lg lg:flex h-fit overflow-hidden">
-          <div className="flex flex-col justify-center items-center h-screen lg:h-full w-full p-10">
+          <div className="flex flex-col justify-center items-center h-screen lg:h-full w-[625px] p-10">
             <div className="w-full space-y-3 mb-4">
               <div className="w-full">
                 <div className="text-center text-2xl text-palette Text-primary font-bold">
