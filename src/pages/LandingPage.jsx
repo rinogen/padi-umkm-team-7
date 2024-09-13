@@ -1,21 +1,17 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Banner from '../components/landingPage/Banner';
 import Benefit from '../components/landingPage/Benefit';
 import Category from '../components/landingPage/Category';
 import Request from '../components/landingPage/Request';
 import { Layout } from '../components/layout/Layout';
 import ModalSplash from '../components/modal/splash/ModalSplash';
-import ModalRegisterAs from '../components/modal/register/register-as/ModalRegisterAs';
-import ModalRegisterPembeli from '../components/modal/register/register-pembeli/ModalRegisterPembeli';
-import ModalLogin from '../components/modal/login/ModalLogin';
 
 const LandingPage = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const benefitRef = useRef(null);
   const categoryRef = useRef(null);
 
-  // Function to scroll to Benefit
   const handleLearnMore = () => {
     if (benefitRef.current) {
       benefitRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -23,7 +19,6 @@ const LandingPage = () => {
     setShowModal(false);
   };
 
-  // Function to scroll to Category
   const handleStartNow = () => {
     if (categoryRef.current) {
       categoryRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -31,16 +26,25 @@ const LandingPage = () => {
     setShowModal(false);
   };
 
+  useEffect(() => {
+    const hasShownModal = localStorage.getItem('hasShownModal');
+
+    if (!hasShownModal) {
+      setShowModal(true);
+      localStorage.setItem('hasShownModal', 'true');
+    }
+  }, []);
+
   return (
     <>
       <Layout>
         <div className="mt-0">
           <Banner />
           <Request />
-          <div ref={categoryRef}>
+          <div ref={categoryRef} className="splash-langsung-offset">
             <Category />
           </div>
-          <div ref={benefitRef}>
+          <div ref={benefitRef} className="splash-pelajari-offset">
             <Benefit />
           </div>
         </div>
@@ -51,9 +55,6 @@ const LandingPage = () => {
         onStartNow={handleStartNow}
         onClose={() => setShowModal(false)}
       />
-      <ModalRegisterAs />
-      <ModalRegisterPembeli />
-      <ModalLogin />
     </>
   );
 };

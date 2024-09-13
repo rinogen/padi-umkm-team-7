@@ -1,6 +1,6 @@
 import { useContext, useState, createContext } from 'react';
 
-const ModalRegisterContext = createContext();
+const ModalContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const ModalRegisterProvider = ({ children }) => {
@@ -34,8 +34,19 @@ export const ModalRegisterProvider = ({ children }) => {
     setShowLoginModal(false);
   };
 
+  const handleRegisterFromLogin = () => {
+    setShowLoginModal(false);
+    setShowRegisterModal(true);
+  };
+
+  const handleLoginFromRegister = () => {
+    setShowRegisterModal(false);
+    setShowRegisterPembeliModal(false);
+    setShowLoginModal(true);
+  };
+
   return (
-    <ModalRegisterContext.Provider
+    <ModalContext.Provider
       value={{
         showLoginModal,
         showRegisterModal,
@@ -43,14 +54,16 @@ export const ModalRegisterProvider = ({ children }) => {
         handleLoginClick,
         handleRegisterClick,
         handleRegisterPembeliClick,
+        handleRegisterFromLogin,
+        handleLoginFromRegister,
         closeLoginModal,
         closeRegisterModal,
         closeRegisterPembeliModal,
       }}>
       {children}
-    </ModalRegisterContext.Provider>
+    </ModalContext.Provider>
   );
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const useModalRegister = () => useContext(ModalRegisterContext);
+export const useModal = () => useContext(ModalContext);

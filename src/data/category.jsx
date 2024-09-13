@@ -52,3 +52,103 @@ export const categoryLinks = [
     link: '/category',
   },
 ];
+
+export const categoryAlpahet = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+];
+
+export const categoryData = [
+  {
+    name: 'Pendidikan',
+    data: ['Jasa Pendidikan'],
+  },
+  {
+    name: 'Pengadaan dan Sewa Kendaraan',
+    data: [],
+  },
+  {
+    name: 'Pengadaan Peralatan Mesin',
+    data: [],
+  },
+  {
+    name: 'Perawatan Hewan',
+    data: [],
+  },
+  {
+    name: 'Perawatan Hewan Peliharaan',
+    data: [],
+  },
+  {
+    name: 'Perawatan Tubuh',
+    data: [],
+  },
+  {
+    name: 'Perlengkapan Pesta dan Craft',
+    data: [],
+  },
+  {
+    name: 'Pertanian',
+    data: [],
+  },
+  {
+    name: 'Bahan Kimia',
+    data: ['Asbes', 'Basal', 'Batu Apung', 'Gas Bumi'],
+  },
+  {
+    name: 'Barang Lainnya',
+    data: [],
+  },
+  {
+    name: 'Buku',
+    data: [
+      'Arsitektur',
+      'Buku Hukum',
+      'Ekonomi dan Bisnis',
+      'Pertanian',
+      'Teknik',
+    ],
+  },
+  {
+    name: 'Dapur',
+    data: [
+      'Alat Dapur',
+      'Alat Makan',
+      'Alat Masak',
+      'Alat Minum',
+      'Alat Penyajian',
+      'Alat Pesta',
+      'Alat Rumah Tangga',
+      'Alat Tidur',
+      'Alat Tulis',
+    ],
+  },
+  {
+    name: 'Elektronik',
+    data: ['AC', 'Alat Pemanas', 'Alat Pendingin', 'Alat Pengering', 'Lampu'],
+  },
+];

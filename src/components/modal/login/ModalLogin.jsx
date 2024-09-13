@@ -1,22 +1,29 @@
 import { useState } from 'react';
 import logoGoogle from '../../../assets/logos/register/logo-google.png';
-import { useModalRegister } from '../../../context/RegisterContext';
+import { useModal } from '../../../context/RegisterContext';
 import Modal from '../Modal';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
+import { IoMdClose } from 'react-icons/io';
 
 const ModalLogin = () => {
-  const { showLoginModal, closeLoginModal } = useModalRegister();
+  const { showLoginModal, closeLoginModal, handleRegisterFromLogin } =
+    useModal();
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
   return (
-    <Modal isVisible={showLoginModal} onClose={closeLoginModal}>
+    <Modal isVisible={showLoginModal}>
       <div className="flex justify-center items-center lg:h-screen bg-login-wrapper relative">
         <div className="max-w-screen-sm w-full bg-white border border-gray-300 shadow-lg rounded-lg lg:flex h-fit overflow-hidden">
           <div className="flex flex-col justify-center items-center h-screen lg:h-full w-full p-10">
             <div className="w-full space-y-3 mb-4">
+              <div className="w-full flex justify-end items-center mb-6">
+                <button onClick={closeLoginModal} className="text-black">
+                  <IoMdClose className="w-8 h-8" />
+                </button>
+              </div>
               <div className="w-full">
                 <div className="text-center text-2xl text-palette Text-primary font-bold">
                   Masuk
@@ -25,11 +32,11 @@ const ModalLogin = () => {
               <div className="w-full">
                 <p className="text-center text-md font-normal text-paletteText-primary">
                   Belum Punya Akun?{' '}
-                  <a href="/register-pembeli">
+                  <button onClick={handleRegisterFromLogin}>
                     <span className="text-[#009ea9] font-semibold cursor-pointer">
                       Daftar
                     </span>
-                  </a>
+                  </button>
                 </p>
               </div>
               <div className="w-full">
@@ -96,7 +103,7 @@ const ModalLogin = () => {
                   type="submit"
                   disabled=""
                   className="w-full flex items-center justify-center px-6 py-2 bg-gradient-to-r from-[#0193AC] to-[#3EC4DB] text-white rounded-lg">
-                  Daftar
+                  Masuk
                 </button>
               </div>
             </form>

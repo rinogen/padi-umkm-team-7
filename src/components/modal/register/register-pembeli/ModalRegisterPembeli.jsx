@@ -1,19 +1,28 @@
-import { useModalRegister } from '../../../../context/RegisterContext';
+import { useModal } from '../../../../context/RegisterContext';
 import Modal from '../../Modal';
 import logoGoogle from '../../../../assets/logos/register/logo-google.png';
+import { IoMdClose } from 'react-icons/io';
 
 const ModalRegisterPembeli = () => {
-  const { showRegisterPembeliModal, closeRegisterPembeliModal } =
-    useModalRegister();
+  const {
+    showRegisterPembeliModal,
+    closeRegisterPembeliModal,
+    handleLoginFromRegister,
+  } = useModal();
 
   return (
-    <Modal
-      isVisible={showRegisterPembeliModal}
-      onClose={closeRegisterPembeliModal}>
+    <Modal isVisible={showRegisterPembeliModal}>
       <div className="flex justify-center items-center lg:h-screen bg-login-wrapper relative">
         <div className="max-w-screen-sm w-full bg-white border border-gray-300 shadow-lg rounded-lg lg:flex h-fit overflow-hidden">
           <div className="flex flex-col justify-center items-center h-screen lg:h-full w-[625px] p-10">
             <div className="w-full space-y-3 mb-4">
+              <div className="w-full flex justify-end items-center mb-6">
+                <button
+                  onClick={closeRegisterPembeliModal}
+                  className="text-black">
+                  <IoMdClose className="w-8 h-8" />
+                </button>
+              </div>
               <div className="w-full">
                 <div className="text-center text-2xl text-palette Text-primary font-bold">
                   Daftar Sebagai Pembeli
@@ -22,11 +31,11 @@ const ModalRegisterPembeli = () => {
               <div className="w-full">
                 <p className="text-center text-md font-normal text-paletteText-primary">
                   Sudah punya akun PaDi UMKM?{' '}
-                  <a href="/login">
+                  <button onClick={handleLoginFromRegister}>
                     <span className="text-[#009ea9] font-semibold cursor-pointer">
                       Masuk
                     </span>
-                  </a>
+                  </button>
                 </p>
               </div>
               <div className="w-full">

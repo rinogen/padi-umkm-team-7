@@ -88,3 +88,25 @@ code {
   height: auto;
   opacity: 1;
 }
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+.section-with-offset {
+  scroll-margin-top: 210px; /* Ganti dengan jarak yang kamu inginkan */
+}
+
+.splash-pelajari-offset {
+  scroll-margin-top: 118px; /* Ganti dengan jarak yang kamu inginkan */
+}
+
+.splash-langsung-offset {
+  scroll-margin-top: 108px; /* Ganti dengan jarak yang kamu inginkan */
+}
+

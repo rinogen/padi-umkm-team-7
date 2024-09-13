@@ -2,14 +2,14 @@ import logoBBI from '../../assets/logos/navbar/logo-produk-indo.png';
 import logoBUMN from '../../assets/logos/navbar/logo-bumn.png';
 import logoPadi from '../../assets/logos/navbar/logo-padi.png';
 import { Link } from 'react-router-dom';
-import { useModalRegister } from '../../context/RegisterContext';
+import { useModal } from '../../context/RegisterContext';
 
 // eslint-disable-next-line react/prop-types
 const Navbar = () => {
-  const { handleRegisterClick, handleLoginClick } = useModalRegister();
+  const { handleRegisterClick, handleLoginClick } = useModal();
   return (
-    <div className="bg-bgPrimary">
-      <div className="sticky top-0">
+    <>
+      <div className="sticky top-0 w-full z-40">
         <nav className="justify-between bg-bgSecondary z-40 h-9 hidden md:flex">
           <div className="flex px-[22px] z-40 bg-inactive w-full">
             <div className="flex items-center text-xs font-normal text-[#8D8D97] hover:text-secondary-70 hover:font-bold pr-8 cursor-pointer">
@@ -115,7 +115,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

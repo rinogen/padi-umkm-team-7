@@ -1,15 +1,25 @@
-import { useModalRegister } from '../../../../context/RegisterContext';
+import { IoMdClose } from 'react-icons/io';
+import { useModal } from '../../../../context/RegisterContext';
 import ModalFragment from '../../Modal';
 
 // eslint-disable-next-line react/prop-types
 const Modal = () => {
-  const { showRegisterModal, closeRegisterModal, handleRegisterPembeliClick } =
-    useModalRegister();
+  const {
+    showRegisterModal,
+    closeRegisterModal,
+    handleRegisterPembeliClick,
+    handleLoginFromRegister,
+  } = useModal();
   return (
-    <ModalFragment isVisible={showRegisterModal} onClose={closeRegisterModal}>
+    <ModalFragment isVisible={showRegisterModal}>
       <div className=" flex flex-col">
         <div className="flex-1 bg-white lg:flex overflow-hidden rounded-2xl">
           <div className="flex flex-col justify-center items-center w-[624px] p-10">
+            <div className="w-full flex justify-end items-center mb-6">
+              <button onClick={closeRegisterModal} className="text-black">
+                <IoMdClose className="w-8 h-8" />
+              </button>
+            </div>
             <div className="w-full mb-8">
               <div className="flex justify-between items-center">
                 <div className="text-2xl text-paletteText-primary font-bold">
@@ -93,11 +103,11 @@ const Modal = () => {
               <div className="w-full mt-4">
                 <p className="text-center text-md font-normal text-paletteText-primary">
                   Sudah punya akun PaDi UMKM?{' '}
-                  <a href="/login">
+                  <button onClick={handleLoginFromRegister}>
                     <span className="text-[#009ea9] font-semibold cursor-pointer">
                       Masuk
                     </span>
-                  </a>
+                  </button>
                 </p>
               </div>
             </div>
