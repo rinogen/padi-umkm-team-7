@@ -1,5 +1,5 @@
 {
-  "homepage": "https://rinogen.github.io/padi-umkm-team-7/",
+  "homepage": "https://rinogen.github.io/padi-umkm-team-7",
   "name": "padi-umkm-team-7",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
