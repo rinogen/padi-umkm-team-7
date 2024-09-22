@@ -9,7 +9,7 @@ const ModalSplash = ({ isVisible, onLearnMore, onClose, onStartNow }) => {
     <Modal isVisible={isVisible} onClose={onClose}>
       <div className="relative bg-white p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
         {/* Illustration positioned absolutely */}
-        <div className="absolute left-[-90px] bottom-[-80px]">
+        <div className="absolute left-[-30px] bottom-[-120px] md:left-[-90px] md:bottom-[-80px]">
           <img
             alt="Illustration"
             src={illustration}
@@ -28,14 +28,14 @@ const ModalSplash = ({ isVisible, onLearnMore, onClose, onStartNow }) => {
             dan rasakan manfaatnya!
           </p>
 
-          <div className="flex items-center justify-between">
-            <div className="flex space-x-4">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="flex space-x-4 mb-4 md:mb-0">
               <img alt="Logo BUMN" width="128" height="20" src={logoBUMN} />
               <img alt="Logo Padi" width="61" height="33" src={logoPadi} />
             </div>
 
             {/* Adding margin-left to create space between logos and buttons */}
-            <div className="flex space-x-4 ml-8">
+            <div className="flex space-x-4 ml-0 md:ml-8">
               <button
                 className="bg-white text-brPrimary px-6 py-3 rounded-lg border border-brPrimary shadow hover:bg-brPrimary hover:text-white transition duration-200"
                 onClick={onLearnMore}>

@@ -1,11 +1,25 @@
+import { Link } from 'react-router-dom';
 import { benefitLinks } from '../../../data/benefits';
 
 const CardBenefit = () => {
   return (
     <div className="container-layout">
-      <h1 className="text-2xl font-bold mb-6 mt-16">
-        Keuntungan Bergabung di PaDi UMKM B2B
-      </h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold">
+          Keuntungan Bergabung di PaDi UMKM B2B
+        </h1>
+        <Link
+          to="https://info.padiumkm.id/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <button className="bg-white border-gray-200 hover:opacity-75 transition-opacity cursor-pointer py-1 px-4 rounded-lg">
+            <span className="text-brPrimary font-semibold">
+              Pelajari Lebih Lanjut
+            </span>
+          </button>
+        </Link>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {benefitLinks.map((benefit, index) => (
           <div

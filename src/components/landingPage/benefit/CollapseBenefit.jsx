@@ -13,7 +13,7 @@ const CollapseBenefit = () => {
 
   return (
     <div className="container-layout py-4">
-      <div className="border-[1px] rounded-2xl divide-y-[1px]">
+      <div className="border-[1px] bg-white rounded-2xl divide-y-[1px]">
         {data.map((item) => (
           <div
             key={item.id}

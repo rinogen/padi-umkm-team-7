@@ -12,9 +12,9 @@ const Modal = () => {
   } = useModal();
   return (
     <ModalFragment isVisible={showRegisterModal}>
-      <div className=" flex flex-col">
-        <div className="flex-1 bg-white lg:flex overflow-hidden rounded-2xl">
-          <div className="flex flex-col justify-center items-center w-[624px] p-10">
+      <div className="flex flex-col h-full">
+        <div className="flex-1 bg-white lg:flex overflow-hidden rounded-2xl max-w-full max-h-[90vh] overflow-y-auto">
+          <div className="flex flex-col justify-center items-center w-full p-10">
             <div className="w-full flex justify-end items-center mb-6">
               <button onClick={closeRegisterModal} className="text-black">
                 <IoMdClose className="w-8 h-8" />
@@ -37,7 +37,7 @@ const Modal = () => {
                         className="w-full h-full"
                         width="16"
                         height="16"
-                        src="https://padiumkm.id/_next/static/media/buyer.18a44b13.svg"
+                        src="https://padiumkm.id/_next/static/media/buyer.f1766e77.svg"
                       />
                     </div>
                   </div>
@@ -60,7 +60,7 @@ const Modal = () => {
                         className="w-full h-full"
                         width="16"
                         height="16"
-                        src="https://padiumkm.id/_next/static/media/seller.3c2c3760.svg"
+                        src="https://padiumkm.id/_next/static/media/seller.60c45a2f.svg"
                       />
                     </div>
                   </div>
@@ -75,7 +75,7 @@ const Modal = () => {
                 </div>
               </a>
               <div className="w-full mb-2">
-                <p className="text-center text-sm text-palette Text-primary">
+                <p className="text-center text-sm text-paletteText-primary">
                   Dengan mendaftar, saya menyetujui{' '}
                   <a href="/syarat-dan-ketentuan">
                     <span className="text-[#009ea9] font-light cursor-pointer">

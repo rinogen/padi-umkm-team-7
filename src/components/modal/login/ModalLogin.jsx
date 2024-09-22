@@ -1,22 +1,101 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import logoGoogle from '../../../assets/logos/register/logo-google.png';
 import { useModal } from '../../../context/RegisterContext';
 import Modal from '../Modal';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
-import { IoMdClose } from 'react-icons/io';
+import {
+  IoIosInformationCircle,
+  IoIosWarning,
+  IoMdClose,
+  IoMdCloseCircle,
+} from 'react-icons/io';
+import { useAuth } from '../../../context/AuthContext';
 
 const ModalLogin = () => {
   const { showLoginModal, closeLoginModal, handleRegisterFromLogin } =
     useModal();
+  const { login, loginWithGoogle } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+
+  const handleEmailChange = (e) => {
+    const emailValue = e.target.value;
+    setUsername(emailValue);
+    console.log(emailValue);
+    if (emailValue === '') {
+      setEmailError('Alamat wajib diisi');
+      setIsEmailValid(false);
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+[a-zA-Z]+$/.test(emailValue)) {
+      setEmailError('Email tidak lengkap');
+      setIsEmailValid(false);
+    } else {
+      setEmailError('');
+      setIsEmailValid(true);
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const passwordValue = e.target.value;
+    setPassword(passwordValue);
+    console.log(passwordValue);
+    if (passwordValue === '') {
+      setPasswordError('Kata sandi wajib diisi');
+      setIsPasswordValid(false);
+    } else if (
+      !/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+        passwordValue
+      )
+    ) {
+      setPasswordError(
+        'Password harus terdiri dari minimal 8 karakter dan mengandung huruf, angka, dan simbol.'
+      );
+      setIsPasswordValid(false);
+    } else {
+      setPasswordError('');
+      setIsPasswordValid(true);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await login(username, password);
+      setUsername('');
+      setPassword('');
+      setError('');
+      closeLoginModal();
+      // eslint-disable-next-line no-unused-vars
+    } catch (error) {
+      setError('Silahkan periksa kembali email dan kata sandi Anda');
+    }
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  const handleGoogleLoginClick = async () => {
+    try {
+      await loginWithGoogle();
+      closeLoginModal();
+      window.location.href = '/dashboard';
+    } catch (error) {
+      setError('Gagal masuk dengan Google');
+    }
+  };
+
   return (
     <Modal isVisible={showLoginModal}>
-      <div className="flex justify-center items-center lg:h-screen bg-login-wrapper relative">
-        <div className="max-w-screen-sm w-full bg-white border border-gray-300 shadow-lg rounded-lg lg:flex h-fit overflow-hidden">
+      <div className="flex justify-center items-center lg:h-screen h-full bg-login-wrapper relative p-4">
+        <div className="max-w-screen-sm w-full bg-white border border-gray-300 shadow-lg rounded-lg lg:flex h-fit max-h-[90vh] overflow-y-auto">
           <div className="flex flex-col justify-center items-center h-screen lg:h-full w-full p-10">
             <div className="w-full space-y-3 mb-4">
               <div className="w-full flex justify-end items-center mb-6">
@@ -40,7 +119,9 @@ const ModalLogin = () => {
                 </p>
               </div>
               <div className="w-full">
-                <button className="w-full flex items-center justify-center px-6 py-2 border-2 border-secondary text-secondary font-semibold rounded-lg hover:bg-gray-200 hover:border-gray-200 transition duration-300">
+                <button
+                  onClick={handleGoogleLoginClick}
+                  className="w-full flex items-center justify-center px-6 py-2 border-2 border-secondary text-secondary font-semibold rounded-lg hover:bg-gray-200 hover:border-gray-200 transition duration-300">
                   <img
                     src={logoGoogle}
                     alt="Google Logo"
@@ -63,7 +144,18 @@ const ModalLogin = () => {
               </div>
             </div>
 
-            <form className="w-full">
+            {error && (
+              <div className="w-full mb-6">
+                <div className="bg-red-100 bg-opacity-50 h-full w-full flex items-center justify-between py-4 px-3 rounded-xl space-x-2">
+                  <IoIosInformationCircle className="text-red-400" />
+                  <p className="text-xs text-left text-paletteText-primary w-full">
+                    {error}
+                  </p>
+                  <IoMdCloseCircle className="text-red-400" />
+                </div>
+              </div>
+            )}
+            <form className="w-full" onSubmit={handleSubmit}>
               <div className="w-full space-y-2 mb-4">
                 <label className="block text-paletteText-primary text-sm font-semibold">
                   Alamat Email
@@ -71,9 +163,17 @@ const ModalLogin = () => {
                 <input
                   className="appearance-none border rounded w-full py-2 px-3 text-grey-darker focus:outline-none false"
                   id="email"
-                  type="text"
+                  type="email"
+                  value={username}
+                  onChange={handleEmailChange}
                   placeholder="john@email.com"
                 />
+                {emailError && (
+                  <span className="text-xs text-accent-error-70 flex gap-1 items-center">
+                    <IoIosWarning className="text-red-400" />
+                    <span className="text-red-400">{emailError}</span>
+                  </span>
+                )}
               </div>
 
               <div className="w-full space-y-2 mb-6">
@@ -87,8 +187,12 @@ const ModalLogin = () => {
                     id="password"
                     name="password"
                     type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    required
+                    onChange={handlePasswordChange}
                     placeholder="Masukkan kata sandi"
                   />
+
                   <button
                     type="button"
                     onClick={togglePasswordVisibility}
@@ -96,13 +200,23 @@ const ModalLogin = () => {
                     {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
                   </button>
                 </div>
+                {passwordError && (
+                  <span className="text-xs text-accent-error-70 flex gap-1 items-center">
+                    <IoIosWarning className="text-red-400" />
+                    <span className="text-red-400">{passwordError}</span>
+                  </span>
+                )}
               </div>
 
               <div className="w-full mb-8">
                 <button
                   type="submit"
-                  disabled=""
-                  className="w-full flex items-center justify-center px-6 py-2 bg-gradient-to-r from-[#0193AC] to-[#3EC4DB] text-white rounded-lg">
+                  disabled={!isEmailValid || !isPasswordValid}
+                  className={`w-full flex items-center justify-center px-6 py-2 rounded-lg ${
+                    !username || !password
+                      ? 'bg-gray-100 text-gray-400' // Warna abu dan kursor disabled
+                      : 'bg-gradient-to-r from-[#0193AC] to-[#3EC4DB] text-white' // Warna normal ketika enabled
+                  }`}>
                   Masuk
                 </button>
               </div>

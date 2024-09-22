@@ -1,11 +1,14 @@
+import { AuthProvider } from './context/AuthContext';
 import { ModalRegisterProvider } from './context/RegisterContext';
 import Router from './router/Router';
 
 function App() {
   return (
-    <ModalRegisterProvider>
-      <Router />
-    </ModalRegisterProvider>
+    <AuthProvider>
+      <ModalRegisterProvider>
+        <Router />
+      </ModalRegisterProvider>
+    </AuthProvider>
   );
 }
 

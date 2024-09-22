@@ -110,3 +110,32 @@ code {
   scroll-margin-top: 108px; /* Ganti dengan jarak yang kamu inginkan */
 }
 
+.slider-container {
+  overflow: hidden; /* Menonaktifkan scroll */
+}
+
+/* Hide dots container */
+.slick-dots {
+  display: none !important;
+}
+
+/* Ensure slider container fills its parent */
+.slick-slider {
+  position: relative;
+}
+
+.slick-slide {
+  display: flex !important; /* Pastikan slide produk memiliki flex untuk menghindari meluas */
+  justify-content: center; /* Menjaga item produk tetap di tengah */
+}
+
+.slick-track {
+  display: flex !important; /* Atur track slider agar menyesuaikan secara dinamis */
+  justify-content: center; /* Produk yang sedikit akan tetap berada di tengah */
+}
+
+.slider-item {
+  margin: 0 10px; /* Jarak horizontal antar item */
+}
+
+

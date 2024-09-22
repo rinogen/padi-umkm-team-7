@@ -5,12 +5,16 @@ import Category from '../components/landingPage/Category';
 import Request from '../components/landingPage/Request';
 import { Layout } from '../components/layout/Layout';
 import ModalSplash from '../components/modal/splash/ModalSplash';
+import Product from '../components/landingPage/product/Product';
+import Promo from '../components/landingPage/Promo';
+import ProductTwo from '../components/landingPage/product/ProductTwo';
+import ProductThree from '../components/landingPage/product/ProductThree';
 
 const LandingPage = () => {
   const [showModal, setShowModal] = useState(false);
 
   const benefitRef = useRef(null);
-  const categoryRef = useRef(null);
+  const productRef = useRef(null);
 
   const handleLearnMore = () => {
     if (benefitRef.current) {
@@ -20,8 +24,8 @@ const LandingPage = () => {
   };
 
   const handleStartNow = () => {
-    if (categoryRef.current) {
-      categoryRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (productRef.current) {
+      productRef.current.scrollIntoView({ behavior: 'smooth' });
     }
     setShowModal(false);
   };
@@ -41,9 +45,13 @@ const LandingPage = () => {
         <div className="mt-0">
           <Banner />
           <Request />
-          <div ref={categoryRef} className="splash-langsung-offset">
-            <Category />
+          <Category />
+          <div ref={productRef} className="splash-langsung-offset">
+            <Product />
           </div>
+          <Promo />
+          <ProductTwo />
+          <ProductThree />
           <div ref={benefitRef} className="splash-pelajari-offset">
             <Benefit />
           </div>
